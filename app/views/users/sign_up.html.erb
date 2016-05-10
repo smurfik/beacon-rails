@@ -1,0 +1,29 @@
+<h1>Sign Up</h1>
+
+<% if @user %>
+  <ul>
+    <% @user.errors.each do |column, error_message| %>
+      <div>
+        <li><%= column %> <%= error_message %></li>
+      </div>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_tag sign_up_path do %>
+  <div>
+    <%= label_tag "e-mail" %>
+  </div>
+  <%= text_field_tag "user[email]", nil, placeholder: "user@example.com" %>
+  <div>
+    <%= label_tag :password %>
+  </div>
+  <%= password_field_tag "user[password]", nil, placeholder: "password" %>
+  <div>
+    <%= label_tag "confirm your password" %>
+  </div>
+  <%= password_field_tag "user[password_confirmation]", nil, placeholder: "password" %>
+  <div>
+    <%= submit_tag "Sign Up" %>
+  </div>
+<% end %>
