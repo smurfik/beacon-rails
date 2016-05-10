@@ -14,7 +14,15 @@
   <div>
     <%= label_tag "e-mail" %>
   </div>
-  <%= text_field_tag "user[email]", nil, placeholder: "user@example.com" %>
+  <%= text_field_tag "user[email]", @user.email, placeholder: "user@example.com" %>
+  <div>
+    <%= label_tag "First Name" %>
+  </div>
+  <%= text_field_tag "user[first_name]", @user.first_name, placeholder: "Sunny" %>
+  <div>
+    <%= label_tag "Last Name" %>
+  </div>
+  <%= text_field_tag "user[last_name]", @user.last_name, placeholder: "Johnson" %>
   <div>
     <%= label_tag :password %>
   </div>
