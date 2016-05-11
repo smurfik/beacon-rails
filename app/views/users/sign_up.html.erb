@@ -3,9 +3,7 @@
 <% if @user %>
   <ul>
     <% @user.errors.each do |column, error_message| %>
-      <div>
-        <li><%= column %> <%= error_message %></li>
-      </div>
+      <li><%= column %> <%= error_message %></li>
     <% end %>
   </ul>
 <% end %>
