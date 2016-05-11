@@ -1,15 +1,14 @@
 class UsersController < ApplicationController
 
   def home
-    set_current_user
-    if @current_user
-      @users_organizations = @current_user.users_organizations.includes(:organization)
+    if current_user
+      @users_organizations = current_user.users_organizations.includes(:organization)
     end
   end
 
   def sign_up
     @user = User.new
-    if set_current_user
+    if current_user
       redirect_to root_path
     end
   end
