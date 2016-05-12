@@ -3,4 +3,5 @@ class Organization < ActiveRecord::Base
 
   has_many :users_organizations, dependent: :destroy
   has_many :users, through: :users_organizations
+  has_many :organization_invites
 end
