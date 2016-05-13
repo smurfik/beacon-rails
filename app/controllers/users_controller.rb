@@ -27,6 +27,10 @@ class UsersController < ApplicationController
     @user = User.new(params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation))
     if @user.save
       session[:user_id] = @user.id
+      @org_invite = OrganizationInvite.find_by(email: @user.email)
+      if @org_invite
+        UsersOrganization.create!(user: @user, organization_id: @org_invite.organization_id, role: @org_invite.role, active: true)
+      end
       redirect_to root_path
     else
       render :sign_up
