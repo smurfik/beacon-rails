@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   get 'sign-out', to: 'users#sign_out', as: :sign_out
 
   post 'organizations', to: 'organizations#create'
+
+  get 'organization-invites/new', to: 'organization_invites#new', as: :new_org
+  post 'organization-invites', to: 'organization_invites#create', as: :create_org
 end
