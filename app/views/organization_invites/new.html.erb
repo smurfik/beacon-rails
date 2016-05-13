@@ -1,0 +1,19 @@
+<h3>Organization Name: <%= @organization.name %></h3>
+
+<% if @org_invite %>
+  <ul>
+    <% @org_invite.errors.each do |column, error_message| %>
+      <li><%= error_message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_tag create_org_path do %>
+  <%= label_tag :email %>
+  <%= hidden_field_tag "organization_invite[organization_id]", @organization.id %>
+  <%= text_field_tag "organization_invite[email]", nil, placeholder: "email" %>
+  <%= select_tag "organization_invite[role]", options_for_select(UsersOrganization.roles) %>
+  <div>
+    <%= submit_tag "Send an invite" %>
+  </div>
+<% end %>
