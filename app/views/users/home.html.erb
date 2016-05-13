@@ -29,7 +29,7 @@
         <li>role is: <%= user_org.role %></li>
         <li>status is active: <%= user_org.active %></li>
         <% if user_org.admin? %>
-          <li><button><%= link_to "Invite ppl", "#" %></button></li>
+          <li><button><%= link_to "Invite ppl", new_org_path(organization_id: user_org.organization_id) %></button></li>
         <% end %>
       <% end %>
     </ul>
