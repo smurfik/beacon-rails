@@ -23,7 +23,7 @@ class OrganizationInvitesController < ApplicationController
   end
 
   def user
-    @user ||= User.find_by(email: params[:organization_invite][:email])
+    @user ||= User.find_by(email: params[:organization_invite][:email].downcase)
   end
 
   def organization
