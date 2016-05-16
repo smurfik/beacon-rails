@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       @org_invites = OrganizationInvite.where("email = ? and created_at >= ?", @user.email, 1.week.ago)
-      if @org_invites.length > 0
+      if @org_invites.exists?
         @org_invites.each do |org_invite|
           UsersOrganization.create!(user: @user, organization_id: org_invite.organization_id, role: org_invite.role, active: true)
         end
