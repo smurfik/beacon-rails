@@ -5,6 +5,7 @@ class OrganizationInvitesController < ApplicationController
   end
 
   def create
+    redirect_to root_path unless UsersOrganization.find_by!(user: current_user, organization_id: params[:organization_invite][:organization_id]).admin?
     if !user
       @org_invite = OrganizationInvite.new(params.require(:organization_invite).permit(:email, :role, :organization_id))
       if @org_invite.save
