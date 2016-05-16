@@ -38,7 +38,7 @@ class OrganizationInvitesController < ApplicationController
     @users_org = UsersOrganization.new(
       user: user,
       organization: organization,
-      role: params[:organization_invite][:role].to_i,
+      role: params[:organization_invite][:role],
       active: true
     )
   end
