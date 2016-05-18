@@ -6,4 +6,8 @@ class UsersOrganization < ActiveRecord::Base
   belongs_to :user
 
   enum role: { admin: 0, reviewer: 1 }
+
+  normalize_attribute :role do |value|
+    value.to_i
+  end
 end

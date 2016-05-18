@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510002841) do
+ActiveRecord::Schema.define(version: 20160512173756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "organization_invites", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "organization_id"
+    t.integer  "role"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "organization_invites", ["organization_id"], name: "index_organization_invites_on_organization_id", using: :btree
 
   create_table "organizations", force: :cascade do |t|
     t.string   "name"
@@ -32,10 +42,12 @@ ActiveRecord::Schema.define(version: 20160510002841) do
   end
 
   create_table "users_organizations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "organization_id"
-    t.boolean "active",          default: false
-    t.integer "role"
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.boolean  "active",          default: false
+    t.integer  "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users_organizations", ["organization_id"], name: "index_users_organizations_on_organization_id", using: :btree
