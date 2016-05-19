@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'sign-in', to: 'users#sign_in', as: :sign_in
   get 'sign-out', to: 'users#sign_out', as: :sign_out
   get 'register', to: 'users#register', as: :register
+  post 'register', to: 'users#stripe'
 
   post 'organizations', to: 'organizations#create'
 
