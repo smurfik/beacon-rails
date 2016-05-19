@@ -54,8 +54,6 @@ class UsersController < ApplicationController
       :currency => "usd",
       :source => params["stripeToken"],
       :description => "Charge for test@example.com"
-    }, {
-      :idempotency_key => ""
     })
   end
 end
