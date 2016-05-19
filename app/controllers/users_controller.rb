@@ -46,4 +46,16 @@ class UsersController < ApplicationController
 
   def register
   end
+
+  def stripe
+    raise
+    Stripe::Charge.create({
+      :amount => 10,
+      :currency => "usd",
+      :source => params["stripeToken"],
+      :description => "Charge for test@example.com"
+    }, {
+      :idempotency_key => ""
+    })
+  end
 end
