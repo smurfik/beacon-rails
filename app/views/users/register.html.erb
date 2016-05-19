@@ -5,15 +5,18 @@
   <div>
     <%= label_tag "Card Number" %>
   </div>
-  <%= text_field_tag "credit_card_number", nil, autocomplete: "off", size: 20 %>
+  <%= text_field_tag "credit_card_number", nil, autocomplete: "off", size: 20, class: "card-number" %>
   <div>
     <%= label_tag "CVC" %>
   </div>
-  <%= text_field_tag "cvc", nil, autocomplete: "off", size: 4 %>
+  <%= text_field_tag "cvc", nil, autocomplete: "off", size: 4, class: "card-cvc" %>
   <div>
     <%= label_tag "Expiration (MM/YYYY)" %>
   </div>
-  <%= text_field_tag "mm", nil, autocomplete: "off", size: 2 %>
+  <%= text_field_tag "mm", nil, autocomplete: "off", size: 2, class: "card-expiry-month" %>
   <span> / </span>
-  <%= text_field_tag "yyyy", nil, autocomplete: "off", size: 4 %>
+  <%= text_field_tag "yyyy", nil, autocomplete: "off", size: 4, class: "card-expiry-year" %>
+  <div>
+    <%= submit_tag "Pay", id: "submitBtn" %>
+  </div>
 <% end %>
