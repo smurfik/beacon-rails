@@ -1,4 +1,4 @@
-<h1>Register</h1>
+<h1>Create Customer</h1>
 
 <%= form_tag register_path, id: "payment-form" do %>
   <div id="payment-errors"></div>
@@ -9,13 +9,13 @@
   <div>
     <%= label_tag "CVC" %>
   </div>
-  <%= text_field_tag "cvc", nil, autocomplete: "off", size: 4, class: "card-cvc" %>
+  <%= text_field_tag "cvc", nil, autocomplete: "off", size: 4, class: "card-cvc", name: nil %>
   <div>
     <%= label_tag "Expiration (MM/YYYY)" %>
   </div>
-  <%= text_field_tag "mm", nil, autocomplete: "off", size: 2, class: "card-expiry-month" %>
+  <%= text_field_tag "mm", nil, autocomplete: "off", size: 2, class: "card-expiry-month", name: nil %>
   <span> / </span>
-  <%= text_field_tag "yyyy", nil, autocomplete: "off", size: 4, class: "card-expiry-year" %>
+  <%= text_field_tag "yyyy", nil, autocomplete: "off", size: 4, class: "card-expiry-year", name: nil %>
   <div>
     <%= submit_tag "Pay", id: "submitBtn" %>
   </div>

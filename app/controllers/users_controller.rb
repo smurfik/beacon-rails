@@ -44,16 +44,4 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "See you soon!"
   end
 
-  def register
-  end
-
-  def stripe
-    raise
-    Stripe::Charge.create({
-      :amount => 10,
-      :currency => "usd",
-      :source => params["stripeToken"],
-      :description => "Charge for test@example.com"
-    })
-  end
 end

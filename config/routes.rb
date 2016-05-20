@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   post 'sign-up', to: 'users#create'
   post 'sign-in', to: 'users#sign_in', as: :sign_in
   get 'sign-out', to: 'users#sign_out', as: :sign_out
-  get 'register', to: 'users#register', as: :register
-  post 'register', to: 'users#stripe'
 
   post 'organizations', to: 'organizations#create'
 
   get 'organization-invites/new', to: 'organization_invites#new', as: :new_org
   post 'organization-invites', to: 'organization_invites#create', as: :create_org
 
+  get 'register', to: 'payments#register', as: :register
+  post 'register', to: 'payments#create_customer'
 end
