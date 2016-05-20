@@ -30,6 +30,7 @@
         <li>status is active: <%= user_org.active %></li>
         <% if user_org.admin? %>
           <li><button><%= link_to "Invite ppl", new_org_path(organization_id: user_org.organization_id) %></button></li>
+          <li><button><%= link_to "Add Credit Card", register_path(organization_id: user_org.organization_id) %></button></li>
         <% end %>
       <% end %>
     </ul>

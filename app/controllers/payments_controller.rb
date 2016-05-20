@@ -3,10 +3,13 @@ class PaymentsController < ApplicationController
   end
 
   def create_customer
-    Stripe::Customer.create(
+    @organization ||= current_user.organizations.find(params[:organization_id])
+    redirect_to root_path unless UsersOrganization.find_by!(user: current_user, organization: @organization).admin?
+    @response = Stripe::Customer.create(
       :description => "Customer for test@example.com",
       :source => params[:stripeToken]
     )
+    @organization.update!(stripe_id: @response.id)
     redirect_to root_path, notice: "Customer was created in Stripe"
   end
 
