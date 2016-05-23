@@ -10,4 +10,7 @@ Rails.application.routes.draw do
 
   get 'organization-invites/new', to: 'organization_invites#new', as: :new_org
   post 'organization-invites', to: 'organization_invites#create', as: :create_org
+
+  get 'register', to: 'payments#register', as: :register
+  post 'register', to: 'payments#create_customer'
 end
