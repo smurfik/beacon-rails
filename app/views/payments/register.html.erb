@@ -1,0 +1,26 @@
+<h1>Create Customer</h1>
+
+<%= form_tag register_path, id: "payment-form" do %>
+  <div id="payment-errors"></div>
+  <%= hidden_field_tag "organization_id", params[:organization_id], class: "org-id" %>
+  <div>
+    <%= label_tag "Card Number" %>
+  </div>
+  <%= text_field_tag "credit_card_number", nil, autocomplete: "off", size: 20, class: "card-number", name: nil %>
+  <div>
+    <%= label_tag "CVC" %>
+  </div>
+  <%= text_field_tag "cvc", nil, autocomplete: "off", size: 4, class: "card-cvc", name: nil %>
+  <div>
+    <%= label_tag "Expiration (MM/YYYY)" %>
+  </div>
+  <%= text_field_tag "mm", nil, autocomplete: "off", size: 2, class: "card-expiry-month", name: nil %>
+  <span> / </span>
+  <%= text_field_tag "yyyy", nil, autocomplete: "off", size: 4, class: "card-expiry-year", name: nil %>
+  <div>
+    <%= submit_tag "Add Credit Card", id: "submitBtn" %>
+  </div>
+<% end %>
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">Stripe.setPublishableKey('<%=ENV["STRIPE_PUBLISHABLE_KEY"]%>');</script>
