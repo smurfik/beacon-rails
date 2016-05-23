@@ -1,10 +1,10 @@
 class PaymentsController < ApplicationController
+  before_action :require_admin, only: :create_customer
+
   def register
   end
 
   def create_customer
-    @organization ||= current_user.organizations.find(params[:organization_id])
-    redirect_to root_path unless UsersOrganization.find_by!(user: current_user, organization: @organization).admin?
     if @organization.stripe_id.blank?
       @response = Stripe::Customer.create(
         :description => "Customer for test@example.com",
@@ -25,5 +25,10 @@ class PaymentsController < ApplicationController
       :description => "Charge for test@example.com"
     })
     redirect_to root_path, notice: "Charge was submitted"
+  end
+
+  def require_admin
+    @organization ||= current_user.organizations.find(params[:organization_id])
+    redirect_to root_path unless UsersOrganization.find_by!(user: current_user, organization: @organization).admin?
   end
 end
