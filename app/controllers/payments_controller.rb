@@ -7,8 +7,8 @@ class PaymentsController < ApplicationController
   def create_customer
     if @organization.stripe_id.blank?
       @response = Stripe::Customer.create(
-        :description => "Customer for test@example.com",
-        :source => params[:stripeToken]
+        :description => "Customer for org #{@organization.name}",
+        :card => params[:stripeToken]
       )
       @organization.update!(stripe_id: @response.id)
       redirect_to root_path, notice: "Customer was created in Stripe"
