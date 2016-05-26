@@ -2,7 +2,6 @@ $(document).ready(function() {
 
   $("#payment-form").submit(function(event) {
     event.preventDefault();
-    var orgId = $('.org-id').val();
     $('#submitBtn').attr('disabled', 'disabled');
 
     Stripe.card.createToken({
@@ -20,7 +19,6 @@ $(document).ready(function() {
       var f = $("#payment-form");
       var token = response.id;
       f.append('<input type="hidden" name="stripeToken" value="' + token + '" />');
-      f.append('<input type="hidden" name="organization_id" value="' + orgId + '" />');
       f.get(0).submit();
     }
   }

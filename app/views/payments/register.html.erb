@@ -2,7 +2,7 @@
 
 <%= form_tag register_path, id: "payment-form" do %>
   <div id="payment-errors"></div>
-  <%= hidden_field_tag "organization_id", params[:organization_id], class: "org-id" %>
+  <%= hidden_field_tag "organization_id", params[:organization_id] %>
   <div>
     <%= label_tag "Card Number" %>
   </div>
